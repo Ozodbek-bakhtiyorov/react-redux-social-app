@@ -44,7 +44,7 @@ export default function SubscribeUserPost() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/subscribepost", {
+    fetch("/subscribepost", {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Ozodbek " + localStorage.getItem("jwt"),
@@ -58,7 +58,7 @@ export default function SubscribeUserPost() {
   }, []);
 
   const LikePost = (id) => {
-    fetch("http://localhost:5000/like", {
+    fetch("/like", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -83,7 +83,7 @@ export default function SubscribeUserPost() {
       .catch((err) => console.log(err));
   };
   const UnLikePost = (id) => {
-    fetch("http://localhost:5000/unlike", {
+    fetch("/unlike", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +108,7 @@ export default function SubscribeUserPost() {
   };
 
   const commentPost = (comment, postId) => {
-    fetch("http://localhost:5000/comments", {
+    fetch("/comments", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -143,7 +143,7 @@ export default function SubscribeUserPost() {
     }
   };
   const deletePost = (id) => {
-    fetch(`http://localhost:5000/deletepost/${id}`, {
+    fetch(`/deletepost/${id}`, {
       method: "delete",
       headers: {
         Authorization: "Ozodbek " + localStorage.getItem("jwt"),

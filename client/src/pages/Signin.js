@@ -57,7 +57,7 @@ const Signin = () => {
       M.toast({ html: toastHtml, classes: "rounded red darken-2 text-light " });
       return;
     }
-    fetch("http://localhost:5000/signup", {
+    fetch("/signup", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -103,7 +103,7 @@ const Signin = () => {
       M.toast({ html: toastHtml, classes: "rounded red darken-2 text-light " });
       return;
     }
-    fetch("http://localhost:5000/signin", {
+    fetch("/signin", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

@@ -23,7 +23,7 @@ export default function Profile() {
 
   const editprofile = function(){
     console.log(userName)
-    fetch('http://localhost:5000/editname', {
+    fetch('/editname', {
       method:"put",
       headers:{
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export default function Profile() {
         .then((data) => {
           seturl(data.url);
 
-          fetch("http://localhost:5000/updateavatar", {
+          fetch("/updateavatar", {
             method: "put",
             headers: {
               "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export default function Profile() {
   }, [img]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/mypost", {
+    fetch("/mypost", {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Ozodbek " + localStorage.getItem("jwt"),

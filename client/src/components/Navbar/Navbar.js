@@ -58,7 +58,7 @@ const Navbar = () => {
   };
   const searchUser = (query) => {
     setSearch(query);
-    fetch("http://localhost:5000/searchuser", {
+    fetch("/searchuser", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

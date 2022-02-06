@@ -22,7 +22,7 @@ export default function Userprofile() {
   
   useEffect(() => {
    
-    fetch(`http://localhost:5000/user/${id}`, {
+    fetch(`/user/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Ozodbek " + localStorage.getItem("jwt"),
@@ -36,7 +36,7 @@ export default function Userprofile() {
   },[id]);
 
   const unFollowUser = () => {
-    fetch("http://localhost:5000/unfollow", {
+    fetch("/unfollow", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ export default function Userprofile() {
   };
   const followUser = () => {
     
-    fetch("http://localhost:5000/follow", {
+    fetch("/follow", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
