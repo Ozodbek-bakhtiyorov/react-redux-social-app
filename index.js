@@ -1,6 +1,4 @@
-require("dotenv").config({ path: "./config/config.env" });
-//cors 
-const cors = require('cors');
+
 const express = require('express');
 
 // imoport models
@@ -10,13 +8,6 @@ const {User} = require('./models');
 const {authRoutes, postRoutes} = require('./routes');
 
 const app = express();
-
-const corsOption = {
-  origin:"*",
-  credentials:true,
-  optionSuccessStatus:200
-}
-app.use(cors(corsOption));
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
