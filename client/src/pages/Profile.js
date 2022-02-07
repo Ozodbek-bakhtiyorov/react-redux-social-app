@@ -127,7 +127,7 @@ export default function Profile() {
         <ImgUpload>
           <div className="container">
             <img
-              src={url ? url : state.avatar}
+              src={state&&state.avatar}
               alt={state.avatar ? `avatar-${state.name}` : "avatar"}
               className="image"
             />
@@ -226,10 +226,14 @@ export const Content = styled.div`
       font-family: "Glory", sans-serif;
     }
     &__info {
+      margin:1rem;
       ${d_flex("", "space-between", "center")};
+      flex-wrap:wrap;
       p {
+        
         font-size: 20px;
         margin-right: 1rem;
+        margin-top:1rem;
         font-weight: 500;
       }
     }
@@ -239,6 +243,7 @@ export const Content = styled.div`
 export const Gallery = styled.div`
   padding: 2rem 0;
   ${d_grid("200px", "20px")};
+
   .gallery-item {
     img {
       width: 100%;

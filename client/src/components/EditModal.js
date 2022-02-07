@@ -3,6 +3,7 @@ import styled from "styled-components";
 import "materialize-css/dist/css/materialize.min.css";
 import { d_flex } from "../mixins";
 import { useDisableScroll } from "../hooks/useDisableScroll";
+window.addEventListener('mousedown',e=>console.log(e.target))
 const Editmodal = ({ isActive, name, setname, setimg, setActive,savehandler }) => {
   useDisableScroll(isActive);
   return (
@@ -22,13 +23,13 @@ const Editmodal = ({ isActive, name, setname, setimg, setActive,savehandler }) =
         <div className="input-field">
           <i className="material-icons blue-text prefix">account_circle</i>
           <input
-            id="icon_prefix"
+            id="username"
             type="text"
             value={name}
             onChange={(e) => setname(e.target.value)}
             className="validate"
           />
-          <label htmlFor="icon_prefix">Foydalanuvchi Nomi</label>
+          <label htmlFor="username">Foydalanuvchi Nomi</label>
         </div>
         <div className="file-field input-field">
           <div className="btn yellow brown darken-3 waves-effect waves-light ">
@@ -64,6 +65,7 @@ export const ContentModal = styled.div`
   background: rgba(0, 0, 0, 0.8);
   transform-origin: top left;
   z-index: 1000;
+  overflow: hidden;
   transition: all 0.4s ease-in-out;
   &.active {
     opacity: 1;
@@ -76,9 +78,7 @@ export const ContentModal = styled.div`
     background: rgba(255, 255, 255, 0.7);
     position: relative;
     .input-field {
-      .btn {
-        border-radius: 50%;
-      }
+    
     }
     .close-btn {
       ${d_flex("row", "center", "center")};
@@ -98,10 +98,17 @@ export const ContentModal = styled.div`
       color:black;
     }
     width: 500px;
+    max-width:100%
     heigh: 70vh;
     padding: 1rem 2rem;
     border-radius: 10px;
     border: 1px solid white;
+    @media screen and (max-width:600px){
+      width:400px;
+    }
+    @media screen and (max-width:400px){
+      width:320px;
+    }
   }
   .search-result{
     padding:1rem 0;

@@ -55,7 +55,7 @@ export default function Home() {
         setData(result.posts);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [data]);
 
   const LikePost = (id) => {
     fetch("/like", {
@@ -106,6 +106,7 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   };
+
 
   const commentPost = (comment, postId) => {
     fetch("/comments", {
@@ -181,7 +182,7 @@ export default function Home() {
                 {data ? (
                   data
                     .map((post) => (
-                      <Card key={post._id}>
+                      <Card key={post._id}sx={{margin:".5rem", boxShadow:" 0 0 3px black"}}>
                         <CardHeader
                           action={
                             post.postedBy._id === state._id ? (

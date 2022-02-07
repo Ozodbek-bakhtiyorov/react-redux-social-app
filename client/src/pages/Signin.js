@@ -6,6 +6,7 @@ import M from "materialize-css";
 import { useHistory } from "react-router-dom";
 import { Input, IconButton } from "@mui/material";
 import AddAPhoto from "@mui/icons-material/AddAPhoto";
+import { d_flex } from "../mixins";
 const Signin = () => {
   const { state, dispatch } = useContext(Usercontext);
 
@@ -20,7 +21,7 @@ const Signin = () => {
   const [logemail, setlogemail] = useState("");
   const [logpassword, setlogpassword] = useState("");
   const [img, setimg] = useState(undefined);
-  const [ url, seturl ]= useState('');
+  const [ url, seturl ]= useState('https://www.prajwaldesai.com/wp-content/uploads/2021/02/Find-Users-Last-Logon-Time-using-4-Easy-Methods.jpg');
 
   const uploadAvatar = ()=>{
     const data = new FormData();
@@ -148,7 +149,7 @@ const Signin = () => {
             className={newuser ? "headerActive" : "headerInActive"}
             onClick={() => handleClick("signUp")}
           >
-            <button className="headerButton"> Ro'yxatdan O'tish </button>
+            <button className="headerButton"> Registratsiya </button>
           </div>
           <div
             className={newuser ? "headerInActive" : "headerActive"}
@@ -341,14 +342,15 @@ export const Content = styled.div`
     margin: 2rem auto;
     padding: 1rem 2rem;
     @media screen and (max-width: 500px) {
-      min-width: 320px;
+      min-width:auto;
+      padding:.5rem 1rem;
     }
   }
 
   .formHeader {
-    height: 50px;
     margin-bottom: 40px;
     position: relative;
+    ${d_flex("row", "space-between", 'center')};
   }
 
   .formBody {
@@ -383,18 +385,21 @@ export const Content = styled.div`
   }
   .headerActive {
     margin: 0px;
-    padding: 0px;
-    display: inline-block;
-    width: 50%;
+    padding: 1rem 2rem;
+    width:auto;
+    display:block;
     height: 100%;
     background-color: #3f3f3f;
-    color: #d8d9de !important;
+    color: #d8d9de !important;  
+    @media screen and (max-width: 400px) {
+      padding:.5rem 1rem;
+    }
   }
   .headerInActive {
-    margin: 0px;
-    padding: 0px;
-    display: inline-block;
-    width: 50%;
+    @media screen and (max-width: 400px) {
+      padding:.5rem 1rem;
+    }
+    padding: 1rem 2rem;
     height: 100%;
     background-color: #ef5252;
     color: #3f3f3f;
@@ -406,6 +411,8 @@ export const Content = styled.div`
   .headerButton {
     outline: none;
     border: none;
+    border-radius:10px;
+    overflow: hidden;
     font-family: "Roboto Mono", monospace;
     font-size: 20px;
     background-color: transparent;
@@ -618,6 +625,12 @@ export const ImgUpload = styled.div`
     color: white;
     font-size: 16px;
     padding: .5rem 1rem;
+  }
+  @media screen and (max-width: 350px) {
+    .image{
+      width:100px;
+      height:100px;
+    }
   }
 `;
 

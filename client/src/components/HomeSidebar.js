@@ -49,7 +49,7 @@ export default function HomeSidebar() {
         setUsers(result);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [users]);
   if (!users) {
     return <Loader />;
   }

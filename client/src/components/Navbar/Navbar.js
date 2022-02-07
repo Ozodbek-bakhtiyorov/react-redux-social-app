@@ -18,6 +18,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useDisableScroll } from "../../hooks/useDisableScroll";
 import PostAddIcon from '@mui/icons-material/PostAdd'
 import logo from '../../img/logo.png'
+import HomeIcon from '@mui/icons-material/Home'
 const Navbar = () => {
   const history = useHistory();
 
@@ -73,7 +74,7 @@ const Navbar = () => {
     if (state) {
       setPages([{ icon:<PostAddIcon style={{fontSize:30}} />,path: "/createpost" }]);
     } else {
-      setPages([{ title: "Kirish", path: "/signin" }]);
+      setPages([{ title: <HomeIcon/>, path: "/signin" }]);
     }
   }, [state]);
   useDisableScroll(isActive);
@@ -99,51 +100,34 @@ const Navbar = () => {
               <Avatar alt="logo" sx={{width:50}} src={logo}/>
             </Typography>
           </Link>
-          <Link to={state ? "/" : "/signin"}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-            >
-              <IconButton sx={{color:'white'}}>
-                <i className="material-icons">home</i>
-              </IconButton>
-            </Typography>
-          </Link>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, justifyContent:'center', }}
-          >
-            {state ? (
-              <Link to="/" style={{display:'flex',alignItems:'center' }}>
-                <i style={{fontSize:30}} className="material-icons">home</i>
-              </Link>
-            ) : (
-              <Link to="/signin">Kirish</Link>
-            )}
-          </Typography>
+        
           <Box
             sx={{
               flexGrow: 1,
               display: {  md: "flex" },
               justifyContent: "flex-end",
-              marginRight: "2rem",
+              marginRight: {xs:1,md:2},
             }}
           >
-            {pages.map((page, i) => (
-              <Link key={i} to={page.path}>
-                <Button sx={{ my: 2, color: "white" }}>{page.title?page.title:page.icon}</Button>
-              </Link>
-            ))}
-          </Box>
+          
+          </Box> 
+          {state&&<Link to={state ? "/" : "/signin"}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ mr: {xs:1, md:2}, display:'flex' }}
+            >
+              <IconButton sx={{color:'white'}}>
+                <i className="material-icons">home</i>
+              </IconButton>
+            </Typography>
+          </Link>}
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
+            sx={{ mr:{xs:1,md:2}, display: "flex" }}
           >
             <IconButton onClick={() => setActive(true)} sx={{ color: "white" }}>
               <SearchIcon sx={{ fontSize: 30 }} />
