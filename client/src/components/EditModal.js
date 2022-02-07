@@ -3,13 +3,20 @@ import styled from "styled-components";
 import "materialize-css/dist/css/materialize.min.css";
 import { d_flex } from "../mixins";
 import { useDisableScroll } from "../hooks/useDisableScroll";
-window.addEventListener('mousedown',e=>console.log(e.target))
 const Editmodal = ({ isActive, name, setname, setimg, setActive,savehandler }) => {
   useDisableScroll(isActive);
+  
+  const handleClick = (e) => {
+    if (e.target.contains(document.querySelector(".modal-content"))&&!(e.target == document.querySelector(".modal-content"))) {
+      setActive(false);
+      console.log();
+      console.log(e.target);
+    }
+  };
   return (
     <ContentModal
       className={`${isActive ? "active" : ""}`}
-      onClick={(e) =>e.stopPropagation()}
+      onClick={handleClick}
       isActive={isActive}
     >
       <div className="modal-content">

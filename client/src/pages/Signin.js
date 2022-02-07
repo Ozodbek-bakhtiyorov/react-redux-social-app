@@ -279,7 +279,7 @@ function Login(props) {
 
   return (
     <div className="signInContainer">
-      <h4 className="headerText">Welcome Back</h4>
+      <h4 className="headerText">Login</h4>
       <div className="inputSection">
         <input
           type="email"

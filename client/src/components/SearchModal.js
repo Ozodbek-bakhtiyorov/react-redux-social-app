@@ -7,12 +7,23 @@ import Loader from "./Loader";
 
 export default function SearchModal(props) {
   const { isActive, setActive, findedusers, search, setSearch } = props;
-  console.log(findedusers)
+
+  const handleClick = (e) => {
+    if (
+      e.target.contains(document.querySelector(".modal-content")) &&
+      !(e.target == document.querySelector(".modal-content"))
+    ) {
+      setActive(false);
+      console.log();
+      console.log(e.target);
+    }
+  };
+
   return (
     <ContentModal
       isActiv={isActive}
       className={`${isActive ? "active" : ""}`}
-      onClick={(e) => e.stopPropagation()}
+      onClick={handleClick}
     >
       <div className="modal-content">
         <span
@@ -34,39 +45,36 @@ export default function SearchModal(props) {
           <label htmlFor="icon_prefix">Qidirish</label>
         </div>
         <div className="search-result">
-           {
-            findedusers ? findedusers.map(user=>(
-              <Card key={user._id} sx={{margin:"1rem .5rem"}}>
-              <CardHeader
-                // action={
-                //   <IconButton
-                //     aria-label="settings"
-                //     // onClick={() => deletePost(post._id)}
-                //   >
-                //     <DeleteForeverIcon sx={{ color: "red", fontSize: 30 }} />
-                //   </IconButton>
-                // }
-                avatar={
-                  <Link to={`/user/${user._id}`}>
-                    {" "}
-                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe" src={user.avatar} alt={user.name}>
-                      {user.name.slice(0,1)}
-                    </Avatar>
-                  </Link>
-                }
-                title={"Ozodbek"}
-                subheader={user.email}
-              />
-            </Card>
+          {findedusers ? (
+            findedusers.map((user) => (
+              <Card key={user._id} sx={{ margin: "1rem .5rem" }}>
+                <CardHeader
+                  avatar={
+                    <Link to={`/user/${user._id}`}>
+                      {" "}
+                      <Avatar
+                        sx={{ bgcolor: "red" }}
+                        aria-label="recipe"
+                        src={user.avatar}
+                        alt={user.name}
+                      >
+                        {user.name.slice(0, 1)}
+                      </Avatar>
+                    </Link>
+                  }
+                  title={user.name}
+                  subheader={user.email}
+                />
+              </Card>
             ))
-            : <Loader/>
-          } 
-         
+          ) : (
+            <Loader />
+          )}
         </div>
         <button
-          onClick={() =>{
-            setSearch('');
-            setActive(false)
+          onClick={() => {
+            setSearch("");
+            setActive(false);
           }}
           className=" btn-close btn blue darken-2 text-light waves-effect waves-light "
         >
