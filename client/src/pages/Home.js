@@ -204,7 +204,6 @@ export default function Home() {
                                   : `/user/${post.postedBy._id}`
                               }
                             >
-                              {" "}
                               <Avatar
                                 sx={{ bgcolor: red[500] }}
                                 aria-label="recipe"
@@ -260,61 +259,20 @@ export default function Home() {
                             Likes:&nbsp;{post.likes.length}
                           </IconButton>
                           <IconButton
+                            onClick={handleExpandClick}
                             sx={{
-                              fontSize: 18,
-                              pointerEvents: "none",
+                              fontSize: 14,
                               fontWeight: "500",
                             }}
                           >
-                            Comments:&nbsp;{post.comments.length}
+                            <ExpandMore
+                              aria-expanded={expanded}
+                              aria-label="show more"
+                            >
+                               Comments:&nbsp;{post.comments.length}
+                            </ExpandMore>
                           </IconButton>
                         </CardActions>
-                        <CardContent>
-                          <Typography sx={{fontSize:{xs:20,md:30}}} color="text.secondary">
-                            {post.title}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            <div className="inputSection">
-                              <form
-                                onSubmit={(e) => onSubmitHandler(e, post._id)}
-                                style={{ display: "flex" }}
-                              >
-                                <input
-                                  type="text"
-                                  placeholder="Izoh Yozish"
-                                  className="firstName"
-                                />
-                                <CardHeader
-                                  avatar={
-                                    <Link
-                                      to={
-                                        post.postedBy._id === state._id
-                                          ? `/profile`
-                                          : `/user/${post.postedBy._id}`
-                                      }
-                                    >
-                                      <Avatar
-                                        sx={{ bgcolor: red[500] }}
-                                        aria-label="recipe"
-                                        src={state.avatar}
-                                      >
-                                        {state.name.slice(0, 1)}
-                                      </Avatar>
-                                    </Link>
-                                  }
-                                  action={
-                                    <IconButton
-                                      type="submit"
-                                      aria-label="settings"
-                                    >
-                                      <SendIcon />
-                                    </IconButton>
-                                  }
-                                />
-                              </form>
-                            </div>
-                          </Typography>
-                        </CardContent>
                         <Collapse in={expanded} timeout="auto" unmountOnExit>
                           <Typography sx={{ padding: "0 2rem" }} paragraph>
                             Izohlar
@@ -378,7 +336,6 @@ export default function Home() {
                                     </div>
                                   </Typography>
                                 ))
-                                .reverse()
                             ) : (
                               <h5>No Comments</h5>
                             )}
@@ -394,6 +351,53 @@ export default function Home() {
                             </IconButton>
                           </CardContent>
                         </Collapse>
+                        <CardContent>
+                          <Typography sx={{fontSize:{xs:20,md:30}}} color="text.secondary">
+                            {post.title}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            <div className="inputSection">
+                              <form
+                                onSubmit={(e) => onSubmitHandler(e, post._id)}
+                                style={{ display: "flex" }}
+                              >
+                                <input
+                                  type="text"
+                                  placeholder="Izoh Yozish"
+                                  className="firstName"
+                                />
+                                <CardHeader
+                                  avatar={
+                                    <Link
+                                      to={
+                                        post.postedBy._id === state._id
+                                          ? `/profile`
+                                          : `/user/${post.postedBy._id}`
+                                      }
+                                    >
+                                      <Avatar
+                                        sx={{ bgcolor: red[500] }}
+                                        aria-label="recipe"
+                                        src={state.avatar}
+                                      >
+                                        {state.name.slice(0, 1)}
+                                      </Avatar>
+                                    </Link>
+                                  }
+                                  action={
+                                    <IconButton
+                                      type="submit"
+                                      aria-label="settings"
+                                    >
+                                      <SendIcon />
+                                    </IconButton>
+                                  }
+                                />
+                              </form>
+                            </div>
+                          </Typography>
+                        </CardContent>
+
                       </Card>
                     ))
                     .reverse()

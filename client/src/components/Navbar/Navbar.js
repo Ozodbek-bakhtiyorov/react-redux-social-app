@@ -87,7 +87,6 @@ const Navbar = () => {
         setActive={setActive}
         findedusers = {findeduser}
       />
-
       <Container>
         <Toolbar disableGutters>
           <Link to={state ? "/" : "/signin"}>
@@ -100,7 +99,23 @@ const Navbar = () => {
               <Avatar alt="logo" sx={{width:50}} src={logo}/>
             </Typography>
           </Link>
-        
+          {
+            pages.map((page, index)=>(
+              <Link key={index} to={page.path}>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ mr: 2, display: "flex" }}
+              >
+                <IconButton sx={{color:'white'}}>
+                  {page.icon}
+                </IconButton>
+              </Typography>
+            </Link>
+            ))
+          }
+         
           <Box
             sx={{
               flexGrow: 1,
