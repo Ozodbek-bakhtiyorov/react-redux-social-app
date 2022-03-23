@@ -1,7 +1,6 @@
 import { CardHeader, IconButton, Avatar, Card } from "@mui/material";
 import React from "react";
 import { ContentModal } from "./EditModal";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { Link } from "react-router-dom";
 import Loader from "./Loader";
 
